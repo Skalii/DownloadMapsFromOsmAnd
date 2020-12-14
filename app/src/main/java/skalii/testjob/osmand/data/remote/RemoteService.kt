@@ -1,9 +1,8 @@
 package skalii.testjob.osmand.data.remote
 
 
-import android.content.Context
-
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -22,6 +21,7 @@ import retrofit2.Retrofit
 
 import skalii.testjob.osmand.BuildConfig
 import skalii.testjob.osmand.toast
+import skalii.testjob.osmand.ui.activity.MainActivity
 
 
 object RemoteService {
@@ -29,16 +29,16 @@ object RemoteService {
     private const val URL = "http://download.osmand.net/"
 
 
-    fun getServiceApi(context: Context): RemoteApi {
+    fun getServiceApi(): RemoteApi {
         return Retrofit.Builder()
             .baseUrl(URL)
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
-            .client(getClient(context))
+            .client(getClient())
             .build()
             .create(RemoteApi::class.java)
     }
 
-    private fun getClient(context: Context): OkHttpClient {
+    private fun getClient(): OkHttpClient {
         val client = OkHttpClient.Builder()
         if (BuildConfig.DEBUG) {
             val logging = HttpLoggingInterceptor()
@@ -58,6 +58,8 @@ object RemoteService {
                     else -> throw IOException("Помилка при з'єднані")
                 }
             }
+
+            val context = MainActivity.getActivityComponent().getContext()
 
             GlobalScope.launch(Dispatchers.Main) {
                 when (response.code) {

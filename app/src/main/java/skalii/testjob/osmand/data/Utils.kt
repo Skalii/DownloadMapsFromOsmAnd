@@ -1,7 +1,6 @@
 package skalii.testjob.osmand.data
 
 
-import android.content.Context
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -18,12 +17,14 @@ import skalii.testjob.osmand.data.model.Region
 import skalii.testjob.osmand.data.model.Region.Companion.FILE_EXTENSION
 import skalii.testjob.osmand.data.remote.RemoteService
 import skalii.testjob.osmand.saveFileToExternalStorage
+import skalii.testjob.osmand.ui.activity.MainActivity
 
 
 object Utils {
 
+    private val context = MainActivity.getActivityComponent().getContext()
+
     fun deleteMap(
-        context: Context,
         fileName: String,
         runAnyAction: (Boolean) -> Unit
     ) {
@@ -35,16 +36,15 @@ object Utils {
     }
 
     fun saveMap(
-        context: Context,
         fileName: String,
         runAnyAction: (Boolean) -> Unit
     ) {
         GlobalScope.launch(Dispatchers.Main) {
             runAnyAction(
                 RemoteService
-                    .getServiceApi(context)
+                    .getServiceApi()
                     .getSomeZipFiles("${fileName}$FILE_EXTENSION")
-                    ?.saveFileToExternalStorage(context, "${fileName}$FILE_EXTENSION")
+                    ?.saveFileToExternalStorage("${fileName}$FILE_EXTENSION")
                     ?.exists() ?: false
             )
         }
@@ -52,7 +52,6 @@ object Utils {
 
 
     fun parseRegions(
-        appContext: Context,
         parent: String = "",
         prefix: String? = null,
         suffix: String? = null
@@ -61,7 +60,7 @@ object Utils {
 
         val factory = DocumentBuilderFactory.newInstance()
         val builder = factory.newDocumentBuilder()
-        val document = builder.parse(appContext.assets.open("regions.xml"))
+        val document = builder.parse(context.assets.open("regions.xml"))
         val regionsList = document.documentElement
 
         iterateOverNodes(

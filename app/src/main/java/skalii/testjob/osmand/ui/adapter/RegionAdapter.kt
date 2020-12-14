@@ -17,6 +17,7 @@ import skalii.testjob.osmand.data.Utils.saveMap
 import skalii.testjob.osmand.data.model.Region
 import skalii.testjob.osmand.databinding.ItemRegionBinding
 import skalii.testjob.osmand.toast
+import skalii.testjob.osmand.ui.activity.MainActivity
 import skalii.testjob.osmand.ui.adapter.RegionAdapter.RegionViewHolder
 import skalii.testjob.osmand.ui.fragment.RegionFragmentDirections
 
@@ -63,32 +64,28 @@ class RegionAdapter : RecyclerView.Adapter<RegionViewHolder>() {
                 .replace("-", " ")
                 .replace("_", " ")
 
-            var status = region.checkFileExists(viewBinding.root.context)
+            var status = region.checkFileExists()
 
             setImageMap(status)
             setImageStatus(status)
 
             imageStatus.setOnClickListener {
-                if (region.checkFileExists(viewBinding.root.context)) {
-                    deleteMap(
-                        viewBinding.root.context,
-                        region.createFileName()
-                    ) { exists ->
+                if (region.checkFileExists()) {
+                    deleteMap(region.createFileName()) { exists ->
                         status = exists
                         setImageMap(!status)
                         setImageStatus(!status)
                         if (exists) it.context.toast("Карта удалена")
+                        MainActivity.updateDeviceMemory()
                     }
                 } else {
                     it.context.toast("Загрузка карты началась")
-                    saveMap(
-                        viewBinding.root.context,
-                        region.createFileName()
-                    ) { exists ->
+                    saveMap(region.createFileName()) { exists ->
                         status = exists
                         setImageMap(status)
                         setImageStatus(status)
                         showStatus(status)
+                        MainActivity.updateDeviceMemory()
                     }
                 }
             }

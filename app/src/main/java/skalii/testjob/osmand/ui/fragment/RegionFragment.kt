@@ -32,7 +32,6 @@ class RegionFragment : Fragment(R.layout.fragment_region) {
         val regionAdapter = RegionAdapter()
         regionAdapter.setData(
             parseRegions(
-                requireContext(),
                 region?.name ?: "europe",
                 if (region?.prefix == "\$name") region?.name else region?.prefix,
                 region?.suffix ?: "europe"

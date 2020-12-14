@@ -20,6 +20,7 @@ import java.io.OutputStream
 
 import okhttp3.ResponseBody
 
+import skalii.testjob.osmand.ui.activity.MainActivity
 import skalii.testjob.osmand.ui.adapter.RegionAdapter
 
 
@@ -51,9 +52,13 @@ fun RecyclerView.setVerticalDivider(
 }
 
 
-fun ResponseBody.saveFileToExternalStorage(context: Context, path: String) =
+fun ResponseBody.saveFileToExternalStorage(path: String) =
     try {
-        val futureFile = File("${context.filesDir?.path}${File.separator}$path")
+        val futureFile = File(
+            "${
+                MainActivity.getActivityComponent().getContext().filesDir?.path
+            }${File.separator}$path"
+        )
         var inputStream: InputStream? = null
         var outputStream: OutputStream? = null
         try {

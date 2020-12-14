@@ -1,13 +1,13 @@
 package skalii.testjob.osmand.data.model
 
 
-import android.content.Context
-
 import java.io.Serializable
 import java.util.Locale.ROOT
 import java.io.File
 
 import org.w3c.dom.NamedNodeMap
+
+import skalii.testjob.osmand.ui.activity.MainActivity
 
 
 data class Region(
@@ -57,9 +57,11 @@ data class Region(
         if (suffix != null && suffix?.isNotBlank() == true && suffix?.isNotEmpty() == true) "_$suffix" else ""
     }".capitalize(ROOT)
 
-    fun checkFileExists(context: Context) =
+    fun checkFileExists() =
         File(
-            "${context.filesDir?.path}${File.separator}${createFileName()}$FILE_EXTENSION"
+            "${
+                MainActivity.getActivityComponent().getContext().filesDir?.path
+            }${File.separator}${createFileName()}$FILE_EXTENSION"
         ).exists()
 
 }
