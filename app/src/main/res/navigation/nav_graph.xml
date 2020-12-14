@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/regionFragment">
+
+    <fragment
+        android:id="@+id/regionFragment"
+        android:name="skalii.testjob.osmand.ui.fragment.RegionFragment"
+        android:label="RegionFragment"
+        tools:layout="@layout/fragment_region">
+        <action
+            android:id="@+id/action_regionFragment_self"
+            app:destination="@id/regionFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <argument
+            android:name="region"
+            android:defaultValue="@null"
+            app:argType="skalii.testjob.osmand.data.model.Region"
+            app:nullable="true" />
+    </fragment>
+
+</navigation>

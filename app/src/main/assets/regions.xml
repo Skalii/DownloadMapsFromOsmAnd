@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="utf-8"?>
+<regions_list>
+    <!-- boundary:
+    1. boundary="no" - no boundary for this region
+    2. boundary omit - boundary will be looked up by name
+    3. boundary="$FILENAME" boundary will be looked up by $FILENAME
+        in case FILENAME duplicates i.e. 'georgia', it will be accessible in 2 ways
+        $PARENT_FOLDER/$FILENAME - 'us/georgia' and 'asia/georgia'
+    -->
+    <!-- type, map, wiki, roads, srtm, hillshade
+        1. by default map=yes, srtm=yes, hillshade=yes (in case 'type' not specified)
+        2. in case wiki/roads not specified, wiki/roads same as maps
+        3. if map, wiki, roads, srtm, hillshade specified, it sets to value specified
+        4. in case type specified it takes precedence and sets all flags = no
+            Examples
+            type=srtm: map=no, srtm=yes, hillshade=no
+            type=hillshade: map=no, srtm=no, hillshade=yes
+            type=continent: map=no, srtm=no, hillshade=no
+    -->
+    <!--
+        download_suffix, inner_download_suffix, download_prefix, inner_download_prefix
+        1. In case download_suffix, download_prefix specified, then
+            download_name = download_prefix + "_" + name + "_" + download_suffix
+           In case only download_suffix speicfied
+               download_name =  name + "_" + download_suffix
+               In case only download_prefix speicfied
+               download_name =  download_prefix + "_" + name
+        2. If download_suffix is not specified it is taken from parent region or from parent parent region ...
+        2.1 If parent region has inner_download_suffix, then download_suffix=inner_download_suffix
+    -->
+    <region name="europe" boundary="no" inner_download_suffix="europe" poly_extract="europe"
+        translate="=Europe" type="continent">
+
+        <!-- north-europe -->
+        <region name="denmark" inner_download_prefix="$name" join_map_files="yes" lang="da"
+            poly_extract="north-europe">
+            <region name="capital-region" translate="name:en=Capital Region of Denmark;entity=relation"
+                type="map" />
+            <region name="central-region" translate="name:en=Central Denmark Region;entity=relation"
+                type="map" />
+            <region name="north-region" translate="name:en=North Denmark Region;entity=relation"
+                type="map" />
+            <region name="southern-region" translate="name:en=Region of Southern Denmark;entity=relation"
+                type="map" />
+            <region name="zealand-region" translate="name:en=Region Zealand;entity=relation"
+                type="map" />
+        </region>
+        <region name="estonia" lang="et" poly_extract="north-europe" />
+        <region name="iceland" lang="is" poly_extract="north-europe" />
+        <region name="faroe-islands" lang="fo" poly_extract="north-europe"
+            translate="Faroe Islands;entity=node" />
+        <region name="finland" inner_download_prefix="$name" join_map_files="yes" lang="fi,sv"
+            poly_extract="north-europe" srtm="no">
+            <region name="aland" map="yes"
+                translate="name:fi=Ahvenanmaa;admin_level=3;entity=relation" />
+            <region name="eastern-finland" hillshade="no" map="yes" srtm="yes"
+                translate="Eastern Finland;entity=relation" />
+            <region name="northern-finland" hillshade="no" map="yes" srtm="no" translate="name:en=Northern Finland;entity=relation"
+                wiki="no">
+                <region name="lapland" translate="Lapland;entity=relation" type="srtm" />
+                <region name="northern-ostrobothnia" translate="name:en=Northern Ostrobothnia;entity=relation"
+                    type="srtm" />
+            </region>
+            <region name="southern-finland" hillshade="no" map="yes" srtm="yes"
+                translate="Southern Finland;entity=relation" />
+            <region name="western-finland" hillshade="no" map="yes" srtm="yes"
+                translate="Western Finland;entity=relation" />
+        </region>
+        <region name="latvia" lang="lv" poly_extract="north-europe" />
+        <region name="lithuania" lang="lt" poly_extract="north-europe" />
+        <region name="norway" inner_download_prefix="$name" join_map_files="yes" lang="nb,nn"
+            poly_extract="north-europe" srtm="no">
+            <region name="akershus" hillshade="no" srtm="yes" translate="Akershus;entity=relation"
+                wiki="no" />
+            <region name="astfold" hillshade="no" srtm="yes" translate="Østfold;entity=relation"
+                wiki="no" />
+            <region name="aust-agder" hillshade="no" srtm="yes" translate="name:en=East Agder;entity=relation"
+                wiki="no" />
+            <region name="buskerud" hillshade="no" srtm="yes" translate="Buskerud;entity=relation"
+                wiki="no" />
+            <region name="finnmark" hillshade="no" srtm="yes" translate="Finnmark;entity=relation"
+                wiki="no" />
+            <region name="hedmark" hillshade="no" srtm="yes" translate="Hedmark;entity=relation"
+                wiki="no" />
+            <region name="hordaland" hillshade="no" srtm="yes" translate="Hordaland;entity=relation"
+                wiki="no" />
+            <region name="more-og-romsdal" hillshade="no" srtm="yes" translate="Møre og Romsdal;entity=relation"
+                wiki="no" />
+            <region name="nordland" hillshade="no" srtm="yes" translate="Nordland;entity=relation"
+                wiki="no" />
+            <region name="oppland" hillshade="no" srtm="yes" translate="Oppland;entity=relation"
+                wiki="no" />
+            <region name="oslo" hillshade="no" srtm="yes" translate="Oslo;entity=relation"
+                wiki="no" />
+            <region name="rogaland" hillshade="no" srtm="yes" translate="Rogaland;entity=relation"
+                wiki="no" />
+            <region name="sogn-og-fjordane" hillshade="no" srtm="yes" translate="Sogn og Fjordane;entity=relation"
+                wiki="no" />
+            <region name="trondelag" hillshade="no" srtm="yes" translate="Trøndelag;entity=relation"
+                wiki="no" />
+            <region name="telemark" hillshade="no" srtm="yes" translate="Telemark;entity=relation"
+                wiki="no" />
+            <region name="troms" hillshade="no" srtm="yes" translate="Troms;entity=relation"
+                wiki="no" />
+            <region name="vest-agder" hillshade="no" srtm="yes" translate="name:en=West Agder;entity=relation"
+                wiki="no" />
+            <region name="vestfold" hillshade="no" srtm="yes" translate="Vestfold;entity=relation"
+                wiki="no" />
+            <region name="svalbard-and-jan-mayen" translate="Svalbard;entity=relation" />
+        </region>
+        <region name="sweden" inner_download_prefix="$name" join_map_files="yes" lang="sv"
+            poly_extract="north-europe" srtm="no">
+            <region name="blekinge" hillshade="no" map="yes" srtm="yes" translate="Blekinge län;entity=relation"
+                wiki="no" />
+            <region name="dalarna" hillshade="no" map="yes" srtm="yes" translate="Dalecarlia;entity=relation"
+                wiki="no" />
+            <region name="gavleborg" hillshade="no" map="yes" srtm="yes" translate="Gävleborgs län;entity=relation"
+                wiki="no" />
+            <region name="gotland" hillshade="no" map="yes" srtm="yes" translate="Gotlands län;entity=relation"
+                wiki="no" />
+            <region name="halland" hillshade="no" map="yes" srtm="yes" translate="Hallands län;entity=relation"
+                wiki="no" />
+            <region name="jamtland" hillshade="no" map="yes" srtm="yes" translate="Jämtlands län;entity=relation"
+                wiki="no" />
+            <region name="jonkoping" hillshade="no" map="yes" srtm="yes" translate="Jönköpings län;entity=relation"
+                wiki="no" />
+            <region name="kalmar" hillshade="no" map="yes" srtm="yes" translate="Kalmar län;entity=relation"
+                wiki="no" />
+            <region name="kronoberg" hillshade="no" map="yes" srtm="yes" translate="Kronobergs län;entity=relation"
+                wiki="no" />
+            <region name="norrbotten" hillshade="no" map="yes" srtm="yes" translate="Norrbottens län;entity=relation"
+                wiki="no" />
+            <region name="orebro" hillshade="no" map="yes" srtm="yes" translate="Örebro län;entity=relation"
+                wiki="no" />
+            <region name="ostergotland" hillshade="no" map="yes" srtm="yes" translate="Östergötlands län;entity=relation"
+                wiki="no" />
+            <region name="skane" hillshade="no" map="yes" srtm="yes" translate="Skåne län;entity=relation"
+                wiki="no" />
+            <region name="sodermanland" hillshade="no" map="yes" srtm="yes" translate="Södermanlands län;entity=relation"
+                wiki="no" />
+            <region name="stockholm" hillshade="no" map="yes" srtm="yes" translate="Stockholms län;entity=relation"
+                wiki="no" />
+            <region name="uppsala" hillshade="no" map="yes" srtm="yes" translate="Uppsala län;entity=relation"
+                wiki="no" />
+            <region name="varmland" hillshade="no" map="yes" srtm="yes" translate="Värmlands län;entity=relation"
+                wiki="no" />
+            <region name="vasterbotten" hillshade="no" map="yes" srtm="yes" translate="Västerbottens län;entity=relation"
+                wiki="no" />
+            <region name="vasternorrland" hillshade="no" map="yes" srtm="yes" translate="Västernorrlands län;entity=relation"
+                wiki="no" />
+            <region name="vastmanland" hillshade="no" map="yes" srtm="yes" translate="Västmanlands län;entity=relation"
+                wiki="no" />
+            <region name="vastra-gotaland" hillshade="no" map="yes" srtm="yes" translate="Västra Götalands län;entity=relation"
+                wiki="no" />
+        </region>
+
+        <!-- east-europe -->
+        <region name="belarus" inner_download_prefix="$name" join_map_files="yes" lang="be,ru"
+            poly_extract="east-europe" translate="name:en=Belarus;entity=relation">
+            <region name="brest" translate="name:en=Brest Region;entity=relation" type="map" />
+            <region name="gomel" translate="name:en=Homel region;entity=relation" type="map" />
+            <region name="hrodna" translate="name:en=Hrodna Region;entity=relation" type="map" />
+            <region name="magilyow" translate="name:en=Mahilyow Region;entity=relation"
+                type="map" />
+            <region name="minsk" translate="name:en=Minsk;entity=relation" type="map" />
+            <region name="vitebsk" translate="name:en=Vitsebsk Region;entity=relation" type="map" />
+        </region>
+        <region name="bulgaria" lang="bg" poly_extract="east-europe" />
+        <region name="czech-republic" inner_download_prefix="$name"
+            join_map_files="yes" lang="cs,sk" poly_extract="east-europe"
+            translate="name:en=Czechia;entity=relation">
+            <region name="jihovychod" hillshade="no" srtm="no" translate="name:en=Southeast;ref=CZ06;entity=relation"
+                wiki="no" />
+            <region name="jihozapad" hillshade="no" srtm="no" translate="name:en=Southwest;ref=CZ03;entity=relation"
+                wiki="no" />
+            <region name="moravskoslezsko" hillshade="no" srtm="no" translate="name:en=Moravia-Silesia;entity=relation"
+                wiki="no" />
+            <region name="praha" hillshade="no" srtm="no" translate="name:en=Prague;entity=relation"
+                wiki="no" />
+            <region name="severovychod" hillshade="no" srtm="no" translate="name:en=Northeast;ref=CZ05;entity=relation"
+                wiki="no" />
+            <region name="severozapad" hillshade="no" srtm="no" translate="name:en=Northwest;ref=CZ04;entity=relation"
+                wiki="no" />
+            <region name="stredni-cechy" hillshade="no" srtm="no" translate="name:en=Central Bohemia;entity=relation"
+                wiki="no" />
+            <region name="stredni-morava" hillshade="no" srtm="no" translate="name:en=Central Moravia;entity=relation"
+                wiki="no" />
+        </region>
+        <region name="hungary" lang="hu" poly_extract="east-europe" />
+        <region name="moldova" lang="ro" poly_extract="east-europe" />
+        <region name="poland" inner_download_prefix="$name" join_map_files="yes" lang="pl"
+            map="no" poly_extract="east-europe" roads="yes">
+            <region name="greater-poland" hillshade="no" srtm="no" translate="Greater Poland;entity=node"
+                wiki="no" />
+            <region name="kuyavian-pomeranian" hillshade="no" srtm="no" translate="Kuyavian-Pomerania;entity=node"
+                wiki="no" />
+            <region name="lesser-poland" hillshade="no" srtm="no" translate="Lesser Poland;entity=node"
+                wiki="no" />
+            <region name="lodz" hillshade="no" srtm="no" translate="Łódź;entity=node" wiki="no" />
+            <region name="lower-silesian" hillshade="no" srtm="no" translate="Lower Silesia;entity=node"
+                wiki="no" />
+            <region name="lublin" hillshade="no" srtm="no" translate="name:en=Lublin Voivodeship;entity=relation"
+                wiki="no" />
+            <region name="lubusz" hillshade="no" srtm="no" wiki="no" />
+            <region name="masovian" hillshade="no" srtm="no" translate="Masovia;entity=node"
+                wiki="no" />
+            <region name="opole" hillshade="no" srtm="no" translate="Opole Voivodeship;entity=node"
+                wiki="no" />
+            <region name="podlachian" hillshade="no" srtm="no" translate="Podlachia;entity=node"
+                wiki="no" />
+            <region name="pomeranian" hillshade="no" srtm="no" translate="Pomerania;entity=node"
+                wiki="no" />
+            <region name="silesian" hillshade="no" srtm="no" translate="Silesia;entity=node"
+                wiki="no" />
+            <region name="subcarpathian" hillshade="no" srtm="no" translate="Subcarpathia;entity=node"
+                wiki="no" />
+            <region name="swietokrzyskie" hillshade="no" srtm="no" translate="Holy Cross;entity=node"
+                wiki="no" />
+            <region name="warmian-masurian" hillshade="no" srtm="no" translate="Warmian-Masurian Voivodeship;entity=node"
+                wiki="no" />
+            <region name="west-pomeranian" hillshade="no" srtm="no" translate="West Pomerania;entity=node"
+                wiki="no" />
+        </region>
+        <region name="romania" lang="ro" poly_extract="east-europe" />
+        <region name="slovakia" lang="sk" poly_extract="east-europe" />
+        <region name="transnistria" hillshade="no" lang="ru,uk,ro" poly_extract="east-europe" />
+        <region name="ukraine" inner_download_prefix="$name" join_map_files="yes" lang="uk,ru"
+            poly_extract="east-europe">
+            <region name="cherkasy" hillshade="no" srtm="no" translate="name:en=Cherkasy Oblast;entity=relation"
+                wiki="no" />
+            <region name="chernihiv" hillshade="no" srtm="no" translate="name:en=Chernihiv Oblast;entity=relation"
+                wiki="no" />
+            <region name="chernivtsi" hillshade="no" srtm="no" translate="name:en=Chernivtsi Oblast;entity=relation"
+                wiki="no" />
+            <region name="crimea" boundary="ukraine/crimea" hillshade="no" srtm="no" translate="name:en=Autonomous Republic of Crimea;entity=relation"
+                wiki="no" />
+            <region name="dnipropetrovsk" hillshade="no" srtm="no" translate="name:en=Dnipropetrovsk Oblast;entity=relation"
+                wiki="no" />
+            <region name="donetsk" hillshade="no" srtm="no" translate="name:en=Donetsk Oblast;entity=relation"
+                wiki="no" />
+            <region name="ivano-frankivsk" hillshade="no" srtm="no" translate="name:en=Ivano-Frankivsk Oblast;entity=relation"
+                wiki="no" />
+            <region name="kharkiv" hillshade="no" srtm="no" translate="name:en=Kharkiv Oblast;entity=relation"
+                wiki="no" />
+            <region name="kherson" hillshade="no" srtm="no" translate="name:en=Kherson Oblast;entity=relation"
+                wiki="no" />
+            <region name="khmelnytskyy" hillshade="no" srtm="no" translate="name:en=Khmelnytskyi Oblast;entity=relation"
+                wiki="no" />
+            <region name="kiev" hillshade="no" srtm="no" translate="name:en=Kyiv Oblast;entity=relation"
+                wiki="no" />
+            <region name="kiev-city" hillshade="no" srtm="no" translate="name:en=Kyiv;entity=relation"
+                wiki="no" />
+            <region name="kirovohrad" hillshade="no" srtm="no" translate="name:en=Kirovohrad Oblast;entity=relation"
+                wiki="no" />
+            <region name="luhansk" hillshade="no" srtm="no" translate="name:en=Luhansk Oblast;entity=relation"
+                wiki="no" />
+            <region name="lviv" hillshade="no" srtm="no" translate="name:en=Lviv Oblast;entity=relation"
+                wiki="no" />
+            <region name="mykolayiv" hillshade="no" srtm="no" translate="name:en=Mykolaiv Oblast;entity=relation"
+                wiki="no" />
+            <region name="odessa" hillshade="no" srtm="no" translate="name:en=Odesa Oblast;entity=relation"
+                wiki="no" />
+            <region name="poltava" hillshade="no" srtm="no" translate="name:en=Poltava Oblast;entity=relation"
+                wiki="no" />
+            <region name="rivne" hillshade="no" srtm="no" translate="name:en=Rivne Oblast;entity=relation"
+                wiki="no" />
+            <region name="sumy" hillshade="no" srtm="no" translate="name:en=Sumy Oblast;entity=relation"
+                wiki="no" />
+            <region name="ternopil" hillshade="no" srtm="no" translate="name:en=Ternopil Oblast;entity=relation"
+                wiki="no" />
+            <region name="transcarpathia" hillshade="no" srtm="no" translate="name:en=Zakarpattia Oblast;entity=relation"
+                wiki="no" />
+            <region name="vinnytsya" hillshade="no" srtm="no" translate="name:en=Vinnytsia Oblast;entity=relation"
+                wiki="no" />
+            <region name="volyn" hillshade="no" srtm="no" translate="name:en=Volyn Oblast;entity=relation"
+                wiki="no" />
+            <region name="zaporizhzhya" hillshade="no" srtm="no" translate="name:en=Zaporizhia Oblast;entity=relation"
+                wiki="no" />
+            <region name="zhytomyr" hillshade="no" srtm="no" translate="name:en=Zhytomyr Oblast;entity=relation"
+                wiki="no" />
+        </region>
+
+        <!-- south-europe -->
+        <region name="albania" lang="sq" poly_extract="south-europe" />
+        <region name="andorra" lang="ca" poly_extract="south-europe" />
+        <region name="azores" hillshade="no" lang="pt" poly_extract="south-europe"
+            translate="Azores;entity=relation" />
+        <region name="bosnia-herzegovina" lang="bs,hr,sr"
+            poly_extract="south-europe" translate="Bosnia and Herzegovina;entity=node" />
+        <region name="croatia" lang="hr" poly_extract="south-europe" />
+        <region name="cyprus" lang="el,tr" left_hand_navigation="yes"
+            poly_extract="south-europe" translate="name:en=Cyprus;entity=node" />
+        <region name="greece" lang="el" poly_extract="south-europe" />
+        <region name="italy" inner_download_prefix="$name" join_road_files="yes" lang="it"
+            map="no" poly_extract="south-europe">
+            <region name="abruzzo" hillshade="no" />
+            <region name="basilicata" hillshade="no" />
+            <region name="calabria" hillshade="no" />
+            <region name="campania" hillshade="no" />
+            <region name="emilia-romagna" hillshade="no" />
+            <region name="friuli-venezia-giulia" hillshade="no"
+                translate="Friuli Venezia Giulia;entity=node" />
+            <region name="lazio" hillshade="no" />
+            <region name="liguria" hillshade="no" />
+            <region name="lombardia" hillshade="no" />
+            <region name="marche" hillshade="no" />
+            <region name="molise" hillshade="no" />
+            <region name="piemonte" hillshade="no" />
+            <region name="puglia" hillshade="no" />
+            <region name="sardegna" hillshade="no" />
+            <region name="sicilia" hillshade="no" />
+            <region name="toscana" hillshade="no" />
+            <region name="trentino-alto-adige" hillshade="no"
+                translate="Trentino-Alto Adige/Südtirol;entity=node" />
+            <region name="umbria" hillshade="no" />
+            <region name="valle-aosta" hillshade="no" translate="Valle d'Aosta;entity=node" />
+            <region name="veneto" hillshade="no" />
+        </region>
+        <region name="kosovo" lang="sq,sr" poly_extract="south-europe"
+            translate="name:en=Kosovo;entity=relation" />
+        <region name="macedonia" lang="mk" poly_extract="south-europe" />
+        <region name="malta" lang="mt,en" left_hand_navigation="yes"
+            poly_extract="south-europe" translate="name:en=Malta;admin_level=2;entity=relation" />
+        <region name="montenegro" lang="sr,bs,hr,sq" poly_extract="south-europe" />
+        <region name="portugal" lang="pt" poly_extract="south-europe"
+            translate="name:en=Portugal;entity=relation" />
+        <region name="san-marino" lang="it" poly_extract="south-europe"
+            translate="San Marino;entity=node" />
+        <region name="serbia" lang="sr" poly_extract="south-europe" />
+        <region name="slovenia" lang="sl" poly_extract="south-europe" />
+        <region name="spain" inner_download_prefix="$name" join_map_files="yes" join_road_files="yes"
+            lang="es,ca,gl,eu" poly_extract="south-europe" srtm="no">
+            <region name="andalusia" hillshade="no" />
+            <region name="aragon" hillshade="no" />
+            <region name="asturias" hillshade="no" translate="Asturias;entity=relation" />
+            <region name="baleares" hillshade="no" translate="Balearic Islands;entity=relation" />
+            <region name="basque-country" hillshade="no" translate="Basque Country;entity=node" />
+            <region name="canarias" hillshade="no" translate="Canary Islands;entity=relation" />
+            <region name="cantabria" hillshade="no" />
+            <region name="castilla-la-mancha" hillshade="no"
+                translate="Castile-La Mancha;entity=node" />
+            <region name="castilla-leon" hillshade="no" translate="Castile and León;entity=node" />
+            <region name="catalunya" hillshade="no" />
+            <region name="ceuta" hillshade="no" />
+            <region name="extremadura" hillshade="no" />
+            <region name="galicia" hillshade="no" />
+            <region name="madrid" hillshade="no" translate="Community of Madrid;entity=relation" />
+            <region name="melilla" hillshade="no" />
+            <region name="murcia" hillshade="no" translate="Region of Murcia;entity=node" />
+            <region name="navarra" hillshade="no" translate="name:en=Navarre;entity=relation" />
+            <region name="rioja" hillshade="no" translate="Rioja;entity=relation" />
+            <region name="valencia" hillshade="no" translate="Valencian Community;entity=node" />
+            <region name="gibraltar" boundary="no" translate="name:en=Gibraltar;entity=relation"
+                type="hillshade" />
+        </region>
+        <region name="turkey" inner_download_prefix="$name" join_map_files="yes" lang="tr"
+            poly_extract="south-europe" srtm="no">
+            <region name="aegean" hillshade="no" srtm="yes" translate="name:en=Aegean Region;entity=relation"
+                wiki="no" />
+            <region name="black-sea" hillshade="no" srtm="yes" translate="name:en=Black Sea Region;entity=relation"
+                wiki="no" />
+            <region name="central-anatolia" hillshade="no" srtm="yes" translate="name:en=Central Anatolia Region;entity=relation"
+                wiki="no" />
+            <region name="eastern-anatolia" hillshade="no" srtm="yes" translate="name:en=Eastern Anatolia Region;entity=relation"
+                wiki="no" />
+            <region name="marmara" hillshade="no" srtm="yes" translate="name:en=Marmara Region;entity=relation"
+                wiki="no" />
+            <region name="mediterranean" hillshade="no" srtm="yes" translate="name:en=Mediterranean Region;entity=relation"
+                wiki="no" />
+            <region name="southeastern-anatolia" hillshade="no" srtm="yes" translate="name:en=Southeastern Anatolia Region;entity=relation"
+                wiki="no" />
+        </region>
+
+        <!-- west-europe -->
+        <region name="austria" inner_download_prefix="$name" join_map_files="yes" lang="de"
+            poly_extract="west-europe">
+            <region name="burgenland" type="map" />
+            <region name="carinthia" type="map" />
+            <region name="lower-austria" translate="name:en=Lower Austria;entity=relation"
+                type="map" />
+            <region name="salzburg" type="map" />
+            <region name="styria" type="map" />
+            <region name="tyrol" type="map" />
+            <region name="upper-austria" translate="name:en=Upper Austria;entity=relation"
+                type="map" />
+            <region name="vorarlberg" type="map" />
+        </region>
+        <region name="belgium" inner_download_prefix="$name" join_map_files="yes"
+            lang="nl,fr,de" poly_extract="west-europe">
+            <region name="flanders" translate="name:en=Flanders;entity=relation" type="map" />
+            <region name="wallonia" translate="name:en=Wallonia;entity=relation" type="map" />
+        </region>
+        <region name="france" inner_download_prefix="$name" join_road_files="yes" lang="fr" map="no" poly_extract="france"
+            roads="yes" srtm="no">
+            <region name="corse" hillshade="no" translate="name:en=Corsica;entity=relation" />
+            <region name="ile-de-france" hillshade="no" />
+            <region name="pays-de-la-loire" hillshade="no"
+                translate="name:en=Pays de la Loire;entity=relation" />
+            <region name="provence-alpes-cote-d-azur"
+                hillshade="no" translate="Provence-Alpes-Côte d'Azur;entity=node" />
+            <region name="auvergne-rhone-alpes" hillshade="no"
+                inner_download_prefix="france_auvergne-rhone-alpes" join_map_files="yes"
+                translate="Auvergne-Rhône-Alpes;entity=relation">
+                <region name="ain" translate="Ain;entity=relation" type="map" />
+                <region name="allier" translate="Allier;entity=relation" type="map" />
+                <region name="ardeche" translate="Ardèche;entity=relation" type="map" />
+                <region name="cantal" translate="Cantal;entity=relation" type="map" />
+                <region name="drome" translate="Drôme;entity=relation" type="map" />
+                <region name="haute-loire" translate="Haute-Loire;entity=relation" type="map" />
+                <region name="isere" translate="Isère;entity=relation" type="map" />
+                <region name="loire" translate="Loire;entity=relation" type="map" />
+                <region name="lyon" translate="Métropole de Lyon;entity=relation" type="map" />
+                <region name="puy-de-dome" translate="Puy-de-Dôme;entity=relation" type="map" />
+                <region name="savoy" translate="Savoie;entity=relation" type="map" />
+                <region name="upper-savoy" translate="Haute-Savoie;entity=relation" type="map" />
+            </region>
+            <region name="bourgogne-franche-comte"
+                hillshade="no" translate="Bourgogne-Franche-Comté;entity=relation" />
+            <region name="brittany" hillshade="no" translate="name:en=Brittany;entity=relation" />
+            <region name="centre-loire-valley"
+                hillshade="no" translate="name:en=Centre-Loire Valley;entity=relation" />
+            <region name="great-east" hillshade="no"
+                inner_download_prefix="france_great-east" join_map_files="yes" translate="name:en=Grand Est;entity=relation">
+                <region name="ardennes" translate="Ardennes;entity=relation" type="map" />
+                <region name="aube" translate="Aube;entity=relation" type="map" />
+                <region name="bas-rhin" translate="Bas-Rhin;entity=relation" type="map" />
+                <region name="haute-marne" translate="Haute-Marne;entity=relation" type="map" />
+                <region name="haut-rhin" translate="Haut-Rhin;entity=relation" type="map" />
+                <region name="marne" translate="Marne;entity=relation" type="map" />
+                <region name="meurthe-et-moselle" translate="Meurthe-et-Moselle;entity=relation"
+                    type="map" />
+                <region name="meuse" translate="Meuse;entity=relation" type="map" />
+                <region name="moselle" translate="Moselle;entity=relation" type="map" />
+                <region name="vosges" translate="Vosges;entity=relation" type="map" />
+            </region>
+            <region name="hauts-de-france" hillshade="no"
+                translate="name=Hauts-de-France;entity=relation" />
+            <region name="new-aquitaine" hillshade="no"
+                inner_download_prefix="france_new-aquitaine" join_map_files="yes"
+                translate="name:en=New Aquitaine;entity=relation">
+                <region name="charente" translate="Charente;entity=relation" type="map" />
+                <region name="charente-maritime" translate="Charente-Maritime;entity=relation"
+                    type="map" />
+                <region name="correze" translate="Corrèze;entity=relation" type="map" />
+                <region name="creuse" translate="Creuse;entity=relation" type="map" />
+                <region name="deux-sevres" translate="Deux-Sèvres;entity=relation" type="map" />
+                <region name="dordogne" translate="Dordogne;entity=relation" type="map" />
+                <region name="gironde" translate="Gironde;entity=relation" type="map" />
+                <region name="haute-vienne" translate="Haute-Vienne;entity=relation" type="map" />
+                <region name="landes" translate="Landes;entity=relation" type="map" />
+                <region name="lot-et-garonne" translate="Lot-et-Garonne;entity=relation"
+                    type="map" />
+                <region name="pyrenees-atlantiques" translate="Pyrénées-Atlantiques;entity=relation"
+                    type="map" />
+                <region name="vienne" translate="Vienne;entity=relation" type="map" />
+            </region>
+            <region name="normandy" hillshade="no" translate="name:en=Normandy;entity=relation" />
+            <region name="occitania" hillshade="no"
+                inner_download_prefix="france_occitania" join_map_files="yes" translate="name:en=Occitania;entity=relation">
+                <region name="ariege" translate="Ariège;entity=relation" type="map" />
+                <region name="aude" translate="Aude;entity=relation" type="map" />
+                <region name="aveyron" translate="Aveyron;entity=relation" type="map" />
+                <region name="gard" translate="Gard;entity=relation" type="map" />
+                <region name="gers" translate="Gers;entity=relation" type="map" />
+                <region name="haute-garonne" translate="Haute-Garonne;entity=relation" type="map" />
+                <region name="hautes-pyrenees" translate="Hautes-Pyrénées;entity=relation"
+                    type="map" />
+                <region name="herault" translate="Hérault;entity=relation" type="map" />
+                <region name="lot" translate="Lot;entity=relation" type="map" />
+                <region name="lozere" translate="Lozère;entity=relation" type="map" />
+                <region name="pyrenees-orientales" translate="Pyrénées-Orientales;entity=relation"
+                    type="map" />
+                <region name="tarn" translate="Tarn;entity=relation" type="map" />
+                <region name="tarn-et-garonne" translate="Tarn-et-Garonne;entity=relation"
+                    type="map" />
+            </region>
+        </region>
+        <region name="germany" inner_download_prefix="$name" lang="de" map="no" poly_extract="germany"
+            roads="yes">
+            <region name="baden-wuerttemberg" hillshade="no"
+                inner_download_prefix="germany_baden-wuerttemberg" join_map_files="yes" translate="Baden-Württemberg;entity=node">
+                <region name="freiburg" translate="name=Regierungsbezirk Freiburg;entity=relation"
+                    type="map" />
+                <region name="karlsruhe" translate="name=Regierungsbezirk Karlsruhe;entity=relation"
+                    type="map" />
+                <region name="stuttgart" translate="name=Regierungsbezirk Stuttgart;entity=relation"
+                    type="map" />
+                <region name="tubingen" translate="name=Regierungsbezirk Tübingen;entity=relation"
+                    type="map" />
+            </region>
+            <region name="bayern" hillshade="no" inner_download_prefix="germany_bayern"
+                join_map_files="yes">
+                <region name="lower-bavaria" translate="name:en=Lower Bavaria;entity=relation"
+                    type="map" />
+                <region name="lower-franconia" translate="name:en=Lower Franconia;entity=relation"
+                    type="map" />
+                <region name="middle-franconia" translate="name:en=Middle Franconia;entity=relation"
+                    type="map" />
+                <region name="swabia" translate="name:en=Swabia;entity=relation" type="map" />
+                <region name="upper-bavaria" translate="name:en=Upper Bavaria;entity=relation"
+                    type="map" />
+                <region name="upper-franconia" translate="name:en=Upper Franconia;entity=relation"
+                    type="map" />
+                <region name="upper-palatinate" translate="name:en=Upper Palatinate;entity=relation"
+                    type="map" />
+            </region>
+            <region name="berlin" hillshade="no" />
+            <region name="brandenburg" hillshade="no" />
+            <region name="hamburg" hillshade="no" />
+            <region name="hessen" hillshade="no" inner_download_prefix="germany_hessen"
+                join_map_files="yes">
+                <region name="darmstadt" translate="Regierungsbezirk Darmstadt;entity=relation"
+                    type="map" />
+                <region name="giessen" translate="Regierungsbezirk Gießen;entity=relation"
+                    type="map" />
+                <region name="kassel" translate="Regierungsbezirk Kassel;entity=relation"
+                    type="map" />
+            </region>
+            <region name="mecklenburg-vorpommern" hillshade="no" />
+            <region name="niedersachsen" hillshade="no"
+                inner_download_prefix="germany_niedersachsen" join_map_files="yes">
+                <region name="braunschweig" type="map" />
+                <region name="buchholz-in-der-nordheide" translate="Buchholz in der Nordheide;entity=node"
+                    type="map" />
+                <region name="hannover" type="map" />
+                <region name="oldenburg" type="map" />
+                <region name="bremen" boundary="germany/bremen"
+                    translate="Free and Hanseatic City of Bremen;entity=node" />
+            </region>
+            <region name="nordrhein-westfalen" hillshade="no"
+                inner_download_prefix="germany_nordrhein_westfalen" join_map_files="yes">
+                <region name="cologne-government-region" translate="name:en=Cologne Government Region;entity=relation"
+                    type="map" />
+                <region name="arnsberg" translate="name=Regierungsbezirk Arnsberg;entity=relation"
+                    type="map" />
+                <region name="detmold" translate="name=Regierungsbezirk Detmold;entity=relation"
+                    type="map" />
+                <region name="dusseldorf" translate="name=Regierungsbezirk Düsseldorf;entity=relation"
+                    type="map" />
+                <region name="munster" translate="name=Regierungsbezirk Münster;entity=relation"
+                    type="map" />
+            </region>
+            <region name="rheinland-pfalz" hillshade="no" />
+            <region name="saarland" hillshade="no" />
+            <region name="sachsen" hillshade="no" />
+            <region name="sachsen-anhalt" hillshade="no" />
+            <region name="schleswig-holstein" hillshade="no" />
+            <region name="thueringen" hillshade="no" translate="Thuringia;entity=node" />
+        </region>
+        <region name="gb" boundary="no" hillshade="yes" inner_download_prefix="$name"
+            lang="en" left_hand_navigation="yes" map="no" metric="miles" srtm="no"
+            translate="United Kingdom;entity=relation">
+            <region name="scotland" hillshade="no" poly_extract="west-europe" />
+            <region name="wales" hillshade="no" poly_extract="west-europe" />
+            <region name="northern_ireland" hillshade="no"
+                poly_extract="west-europe" translate="Northern Ireland;entity=relation" />
+            <region name="england" hillshade="no"
+                inner_download_prefix="gb_england" join_map_files="yes" poly_extract="west-europe"
+                translate="England;entity=relation">
+                <region name="east-midlands" hillshade="no" srtm="no"
+                    translate="East Midlands;entity=relation" />
+                <region name="east-of-england" hillshade="no" srtm="no"
+                    translate="East of England;entity=relation" />
+                <region name="north-east-england" hillshade="no"
+                    srtm="no" translate="North East England;entity=relation" />
+                <region name="north-west-england" hillshade="no"
+                    srtm="no" translate="North West England;entity=relation" />
+                <region name="south-east-england" hillshade="no" srtm="no"
+                    translate="South East;entity=relation" />
+                <region name="south-west-england" hillshade="no"
+                    srtm="no" translate="South West England;entity=relation" />
+                <region name="west-midlands" hillshade="no" srtm="no"
+                    translate="West Midlands;entity=relation" />
+                <region name="yorkshire-and-the-humber"
+                    hillshade="no" srtm="no" translate="Yorkshire and the Humber;entity=relation" />
+                <region name="channel-islands" hillshade="no"
+                    translate="=Channel Islands"> <!-- TODO: add translations -->
+                    <region name="jersey" map="no" />
+                    <region name="guernsey" hillshade="no"
+                        map="no" translate="Guernsey;admin_level=2;entity=relation" />
+                </region>
+                <region name="greater-london" hillshade="no" srtm="no"
+                    translate="Greater London;entity=relation" />
+            </region>
+        </region>
+        <region name="ireland" lang="ga,en" left_hand_navigation="yes"
+            poly_extract="west-europe" translate="name:en=Ireland;entity=node" />
+        <region name="isle-of-man" lang="en,gv" poly_extract="west-europe"
+            translate="Isle of Man;entity=relation" />
+        <region name="liechtenstein" lang="de" poly_extract="west-europe"
+            translate="Liechtenstein;entity=relation" />
+        <region name="luxembourg" lang="fr,de,lb" poly_extract="west-europe" />
+        <region name="monaco" lang="fr" poly_extract="west-europe"
+            translate="Monaco;border_type=nation;entity=relation" />
+        <region name="netherlands" inner_download_prefix="$name"
+            join_map_files="yes" lang="nl" poly_extract="west-europe"
+            translate="Nederland;entity=relation">
+            <region name="drenthe" translate="Drenthe;entity=relation" type="map" />
+            <region name="flevoland" translate="Flevoland;entity=relation" type="map" />
+            <region name="friesland" translate="Friesland;entity=relation" type="map" />
+            <region name="gelderland" translate="Gelderland;entity=relation" type="map" />
+            <region name="groningen" translate="Groningen;entity=relation" type="map" />
+            <region name="limburg" translate="Limburg;entity=relation" type="map" />
+            <region name="noord-brabant" translate="Noord-Brabant;entity=relation" type="map" />
+            <region name="noord-holland" translate="Noord-Holland;entity=relation" type="map" />
+            <region name="overijssel" translate="Overijssel;entity=relation" type="map" />
+            <region name="utrecht" translate="Utrecht;entity=relation" type="map" />
+            <region name="zeeland" translate="Zeeland;entity=relation" type="map" />
+            <region name="zuid-holland" translate="Zuid-holland;entity=relation" type="map" />
+        </region>
+        <region name="switzerland" inner_download_prefix="$name" join_map_files="yes"
+            lang="de,fr,it" poly_extract="west-europe">
+            <region name="basel" type="map" />
+            <region name="bern" type="map" />
+            <region name="central" boundary="switzerland/central"
+                translate="Central;is_in:country=Switzerland;entity=node"
+                type="map" />
+            <region name="eastern" translate="Eastern;is_in:country=Switzerland;entity=node"
+                type="map" />
+            <region name="lake-geneva" translate="Lac Léman;entity=relation" type="map" />
+            <region name="ticino" translate="Ticino;is_in:country=Switzerland;entity=relation"
+                type="map" />
+            <region name="zurich" translate="Zürich;entity=relation" type="map" />
+        </region>
+    </region>
+    <region name="World_basemap" boundary="no" roads="no" translate="=World basemap" type="map"
+        wiki="no" />
+    <region name="World_seamarks" boundary="no" roads="no" translate="=World seamarks" type="map"
+        wiki="no" />
+</regions_list>

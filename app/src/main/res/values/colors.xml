@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <color name="primary">#eaeaea</color>
+
+    <color name="item_background">#ffffff</color>
+    <color name="action_bar">#ff8800</color>
+    <color name="status_bar">#e68200</color>
+    <color name="text">#212121</color>
+    <color name="divider">#e5e5e5</color>
+
+    <color name="status_true">#388E3C</color>
+    <color name="status_false">#727272</color>
+
+</resources>
