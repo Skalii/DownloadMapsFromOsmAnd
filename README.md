@@ -10,8 +10,8 @@
 [Download release APK](https://github.com/Skalii/DownloadMapsFromOsmAnd/tree/master/resources/app-release.apk "Release APK")
 
 <p align="center">
-  <img src="https://github.com/Skalii/DownloadMapsFromOsmAnd/tree/master/resources/data_1.jpg" alt="Viewing saved maps in memory" width="256">
-  <img src="https://github.com/Skalii/DownloadMapsFromOsmAnd/tree/master/resources/main_1.jpg" alt="Main screen with memory storage" width="256" height="455">
-  <img src="https://github.com/Skalii/DownloadMapsFromOsmAnd/tree/master/resources/main_2.jpg" alt="Downloaded Faroe islands and changed free space" width="256" height="455">
-  <img src="https://github.com/Skalii/DownloadMapsFromOsmAnd/tree/master/resources/main_3.jpg" alt="Downloaded Odessa" width="256" height="455">
+  <img src="https://raw.githubusercontent.com/Skalii/DownloadMapsFromOsmAnd/master/resources/data_1.png" alt="Viewing saved maps in memory" width="256">
+  <img src="https://raw.githubusercontent.com/Skalii/DownloadMapsFromOsmAnd/master/resources/main_1.jpg" alt="Main screen with memory storage" width="256" height="455">
+  <img src="https://raw.githubusercontent.com/Skalii/DownloadMapsFromOsmAnd/master/resources/main_2.jpg" alt="Downloaded Faroe islands and changed free space" width="256" height="455">
+  <img src="https://raw.githubusercontent.com/Skalii/DownloadMapsFromOsmAnd/master/resources/main_3.jpg" alt="Downloaded Odessa" width="256" height="455">
 </p>
