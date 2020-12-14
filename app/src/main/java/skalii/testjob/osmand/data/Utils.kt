@@ -39,7 +39,7 @@ object Utils {
         fileName: String,
         runAnyAction: (Boolean) -> Unit
     ) {
-        GlobalScope.launch(Dispatchers.Main) {
+        GlobalScope.launch(Dispatchers.IO) {
             runAnyAction(
                 RemoteService
                     .getServiceApi()

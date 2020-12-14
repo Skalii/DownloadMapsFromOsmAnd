@@ -8,6 +8,9 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 import java.util.Locale.ROOT
 
@@ -81,11 +84,13 @@ class RegionAdapter : RecyclerView.Adapter<RegionViewHolder>() {
                 } else {
                     it.context.toast("Загрузка карты началась")
                     saveMap(region.createFileName()) { exists ->
-                        status = exists
-                        setImageMap(status)
-                        setImageStatus(status)
-                        showStatus(status)
-                        MainActivity.updateDeviceMemory()
+                        GlobalScope.launch(Dispatchers.Main) {
+                            status = exists
+                            setImageMap(status)
+                            setImageStatus(status)
+                            showStatus(status)
+                            MainActivity.updateDeviceMemory()
+                        }
                     }
                 }
             }
